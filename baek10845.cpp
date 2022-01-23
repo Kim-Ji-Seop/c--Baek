@@ -1,8 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <string>
+
 using namespace std;
+
 vector<int> queue;
-void push(int);
+void push(int num);
 int pop();
 int size();
 int empty();
@@ -13,6 +16,8 @@ int main(){
     string str;
     cin >> N;
     while(N--){
+        getline(cin,str);
+
         if(str == "front") front();
         else if(str == "back") back();
         else if(str == "size") size();
@@ -23,10 +28,20 @@ int main(){
             push(a);
         }
         str="";
+
     }
 }
+void print(string str) { 
+    if(str.compare("push") == 0) {
+        cin >> queue[0];
+    }else if(str.compare("front")) front();
+    else if(str == "back") back();
+    else if(str == "size") size();
+    else if(str == "pop") pop();
+    else if(str == "empty") empty();
+}
 void push(int num){
-    queue.at(0) = num;
+    queue[0] = num;
 }
 int pop(){
     int num;

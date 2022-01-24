@@ -36,8 +36,7 @@ int main(){
         }else if(str == "back"){
             if(q.size() == 0) num = -1;
             else num = q.back();
-            
-            cout << num << endl;
+            cout << num << '\n';
         }
  
     }

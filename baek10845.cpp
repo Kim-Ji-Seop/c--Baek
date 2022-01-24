@@ -1,52 +1,45 @@
 #include <iostream>
-#include <vector>
+#include <string>
+#include <queue>
 using namespace std;
-vector<int> queue;
-void push(int);
-int pop();
-int size();
-int empty();
-void front();
-void back();
+
 int main(){
-    int N;
-    string str;
+    ios::sync_with_stdio(0);
+	cin.tie(0);
+    
+    int N,num;
     cin >> N;
+    queue<int> q;
     while(N--){
-        if(str == "front") front();
-        else if(str == "back") back();
-        else if(str == "size") size();
-        else if(str == "pop") pop();
-        else if(str == "empty") empty();
-        else if(str == "push"){
-            int a; cin >> a;
-            push(a);
+        string str;
+        cin >> str;
+        if(str=="push"){
+            int qData;
+            cin >> qData;
+            q.push(qData);
+        }else if(str == "pop"){
+            if(q.size() != 0){
+                num = q.front();
+                q.pop();
+            }else num = -1;
+            cout << num << '\n';
+ 
+        }else if(str == "size") cout << q.size() << '\n';
+        else if(str == "empty"){
+            if(q.size() == 0) num =1;
+            else num =0;
+            cout << num << '\n';
+        }else if(str == "front"){
+            if(q.size() == 0) num = -1;
+            else num = q.front();
+            cout << num << '\n';
+ 
+        }else if(str == "back"){
+            if(q.size() == 0)
+                num = -1;
+            else num = q.back();
+            cout << num << '\n';
         }
-        str="";
     }
-}
-void push(int num){
-    queue.at(0) = num;
-}
-int pop(){
-    int num;
-    if(queue.empty()) return -1;
-    num = queue.back();
-    queue.pop_back();
-    return num; 
-}
-int size(){
-    return queue.size();
-}
-int empty(){
-    if(queue.empty()) return 1;
-    else return 0;
-}
-void front(){
-    if(queue.empty()) cout << -1 << endl;
-    cout << queue.back() << endl;
-}
-void back(){
-    if(queue.empty()) cout << -1 << endl;
-    cout << queue.at(0) << endl;
+    return 0;
 }

@@ -6,7 +6,6 @@ using namespace std;
 int main(){
     ios::sync_with_stdio(0);
 	cin.tie(0);
-    
     int N,num;
     cin >> N;
     queue<int> q;
@@ -35,11 +34,12 @@ int main(){
             cout << num << '\n';
  
         }else if(str == "back"){
-            if(q.size() == 0)
-                num = -1;
+            if(q.size() == 0) num = -1;
             else num = q.back();
-            cout << num << '\n';
+            
+            cout << num << endl;
         }
+ 
     }
     return 0;
 }
